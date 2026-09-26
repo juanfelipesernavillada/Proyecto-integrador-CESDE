@@ -50,7 +50,6 @@ cd Proyecto-integrador-CESDE/Proyecto_Integrador_omnidist-tech
 ## 👥 Integrantes / Desarrolladores
 * 💻 **Juan Serna** - [@juanfelipesernavillada](https://github.com)
 * 🧑‍💻 **Mateo** - [@UsuarioGit2]
-* 🧑‍💻 [Nombre del Integrante 3] - [@UsuarioGit3]
 
 ---
 

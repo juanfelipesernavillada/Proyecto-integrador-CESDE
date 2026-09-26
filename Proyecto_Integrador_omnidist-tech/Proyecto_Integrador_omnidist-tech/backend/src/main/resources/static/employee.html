@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empleado - OmniDist Tech</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/employee.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="admin-body">
+    <!-- Employee Login -->
+    <div class="admin-login" id="employeeLogin">
+      <div class="login-box">
+        <div class="login-brand">
+          <span class="logo-icon"><i class="fas fa-microchip"></i></span>
+          <span class="logo-text"
+            >OmniDist<span class="accent">Tech</span></span
+          >
+        </div>
+        <h2>Panel de Empleado</h2>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="empleado@omnidist.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              required
+              placeholder="••••••••"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+          </button>
+        </form>
+        <div class="login-info">
+          <p><strong>Demo:</strong> empleado@omnidist.com / emp123</p>
+        </div>
+        <a href="index.html" class="back-link">
+          <i class="fas fa-arrow-left"></i> Volver a la tienda
+        </a>
+      </div>
+    </div>
+
+    <!-- Employee Dashboard -->
+    <div class="admin-dashboard" id="employeeDashboard">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <span class="logo-icon"><i class="fas fa-microchip"></i></span>
+            <span class="logo-text"
+              >Empleado<span class="accent">Panel</span></span
+            >
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-page="overview">
+            <i class="fas fa-chart-line"></i>
+            <span>Overview</span>
+          </a>
+          <a href="#" class="nav-item" data-page="products">
+            <i class="fas fa-box"></i>
+            <span>Productos</span>
+          </a>
+          <a href="#" class="nav-item" data-page="orders">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Pedidos</span>
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="user-info">
+              <span class="user-name" id="employeeName">Empleado</span>
+              <span class="user-role" id="employeeRole">Vendedor</span>
+            </div>
+          </div>
+          <button class="btn-logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Overview Page -->
+        <div class="page active" id="page-overview">
+          <div class="page-header">
+            <h1>Panel de Trabajo</h1>
+            <p>Bienvenido al panel de empleado de OmniDist Tech</p>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="stats-container">
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <i class="fas fa-shopping-bag"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statOrders">0</span>
+                <span class="stat-label">Pedidos Activos</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statRevenue">$0</span>
+                <span class="stat-label">Ventas del Día</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">
+                <i class="fas fa-box"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statProducts">0</span>
+                <span class="stat-label">Productos</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon purple">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value" id="statLowStock">0</span>
+                <span class="stat-label">Stock Bajo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="quick-actions">
+            <h3>Acciones Rápidas</h3>
+            <div class="actions-grid">
+              <button
+                class="action-card"
+                onclick="
+                  navigateTo('products');
+                  showProductModal();
+                "
+              >
+                <div class="action-icon">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <span>Nuevo Producto</span>
+              </button>
+              <button class="action-card" onclick="navigateTo('orders')">
+                <div class="action-icon">
+                  <i class="fas fa-tasks"></i>
+                </div>
+                <span>Ver Pedidos</span>
+              </button>
+              <button class="action-card" onclick="navigateTo('products')">
+                <div class="action-icon">
+                  <i class="fas fa-edit"></i>
+                </div>
+                <span>Actualizar Stock</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="recent-section">
+            <div class="section-header">
+              <h3>Pedidos Recientes</h3>
+              <a href="#" class="view-all" onclick="navigateTo('orders')"
+                >Ver todos <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody id="recentOrdersTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Page -->
+        <div class="page" id="page-products">
+          <div class="page-header">
+            <div>
+              <h1>Gestión de Productos</h1>
+              <p>Administra el catálogo de productos</p>
+            </div>
+            <button class="btn btn-primary" onclick="showProductModal()">
+              <i class="fas fa-plus"></i> Nuevo Producto
+            </button>
+          </div>
+
+          <div class="filters-bar">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Buscar productos..."
+                id="productSearch"
+                oninput="filterProducts()"
+              />
+            </div>
+            <select id="categoryFilter" onchange="filterProducts()">
+              <option value="all">Todas las categorías</option>
+              <option value="consolas">Consolas</option>
+              <option value="dispositivos">Dispositivos</option>
+              <option value="herramientas">Herramientas</option>
+            </select>
+          </div>
+
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="productsTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Orders Page -->
+        <div class="page" id="page-orders">
+          <div class="page-header">
+            <div>
+              <h1>Gestión de Pedidos</h1>
+              <p>Seguimiento y gestión de pedidos</p>
+            </div>
+          </div>
+
+          <div class="filters-bar">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Buscar pedidos..."
+                id="orderSearch"
+                oninput="filterOrders()"
+              />
+            </div>
+            <select id="orderStatusFilter" onchange="filterOrders()">
+              <option value="all">Todos los estados</option>
+              <option value="pending">Pendiente</option>
+              <option value="processing">Procesando</option>
+              <option value="shipped">Enviado</option>
+              <option value="delivered">Entregado</option>
+              <option value="cancelled">Cancelado</option>
+            </select>
+          </div>
+
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Cliente</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                  <th>Fecha</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="productModalTitle">Nuevo Producto</h3>
+          <button class="modal-close" onclick="closeProductModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form id="productForm" onsubmit="saveProduct(event)">
+          <input type="hidden" id="productId" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productName">Nombre</label>
+              <input type="text" id="productName" required />
+            </div>
+            <div class="form-group">
+              <label for="productCategory">Categoría</label>
+              <select id="productCategory" required>
+                <option value="consolas">Consolas</option>
+                <option value="dispositivos">Dispositivos</option>
+                <option value="herramientas">Herramientas</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productPrice">Precio ($)</label>
+              <input type="number" id="productPrice" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="productStock">Stock</label>
+              <input type="number" id="productStock" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="productDesc">Descripción</label>
+            <textarea id="productDesc" rows="3"></textarea>
+          </div>
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeProductModal()"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Quick Stock Update Modal -->
+    <div class="modal" id="stockModal">
+      <div class="modal-content modal-sm">
+        <div class="modal-header">
+          <h3>Actualizar Stock</h3>
+          <button class="modal-close" onclick="closeStockModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form id="stockForm" onsubmit="saveStock(event)">
+          <input type="hidden" id="stockProductId" />
+          <div class="form-group">
+            <label for="productNameDisplay">Producto</label>
+            <input type="text" id="productNameDisplay" disabled />
+          </div>
+          <div class="form-group">
+            <label for="currentStock">Stock Actual</label>
+            <input type="number" id="currentStock" disabled />
+          </div>
+          <div class="form-group">
+            <label for="newStock">Nuevo Stock</label>
+            <input type="number" id="newStock" required min="0" />
+          </div>
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeStockModal()"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div class="modal" id="orderModal">
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <h3>Detalles del Pedido #<span id="orderDetailId"></span></h3>
+          <button class="modal-close" onclick="closeOrderModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div id="orderDetailContent"></div>
+      </div>
+    </div>
+
+    <!-- Customer Chat -->
+    <div class="chat-widget" id="chatWidget">
+      <button class="chat-launcher" id="chatLauncher">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat</span>
+      </button>
+      <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+          <div>
+            <h4>Chat de Soporte</h4>
+            <p>¿Necesitas ayuda con pedidos o productos?</p>
+          </div>
+          <button class="chat-new" id="chatNew">Nuevo Chat</button>
+          <button class="chat-close" id="chatClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <form class="chat-form" id="chatForm">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Escribe tu mensaje..."
+            autocomplete="off"
+          />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/employee.js"></script>
+  </body>
+</html>

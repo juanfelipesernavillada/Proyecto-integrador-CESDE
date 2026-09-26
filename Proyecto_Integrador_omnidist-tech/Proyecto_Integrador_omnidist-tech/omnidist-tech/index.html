@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      OmniDist Tech - Consolas, Dispositivos y Herramientas Digitales
+    </title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon"><i class="fas fa-microchip"></i></span>
+          <span class="logo-text"
+            >OmniDist<span class="accent">Tech</span></span
+          >
+        </div>
+        <nav class="nav">
+          <a href="#inicio" class="nav-link active">Inicio</a>
+          <a href="#consolas" class="nav-link">Consolas</a>
+          <a href="#dispositivos" class="nav-link">Dispositivos</a>
+          <a href="#herramientas" class="nav-link">Herramientas</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+          <a href="employee.html" class="nav-link">
+            <i class="fas fa-user"></i> Empleado
+          </a>
+          <a href="admin.html" class="nav-link">
+            <i class="fas fa-user-cog"></i> Admin
+          </a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Tecnología de Vanguardia</span>
+          <h1 class="hero-title">
+            Tu Destino para
+            <span class="highlight">Consolas, Dispositivos</span> y Herramientas
+            Digitales
+          </h1>
+          <p class="hero-subtitle">
+            Descubre lo último en tecnología con nuestra selección premium de
+            productos tecnológicos de las marcas más reconocidas del mundo.
+          </p>
+          <div class="hero-buttons">
+            <a href="#consolas" class="btn btn-primary"
+              >Ver Productos <i class="fas fa-arrow-right"></i
+            ></a>
+            <a href="#contacto" class="btn btn-secondary">Contactar</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Productos</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Marcas</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">10k+</span>
+              <span class="stat-label">Clientes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Consolas Section -->
+    <section class="products-section" id="consolas">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Gaming</span>
+          <h2 class="section-title">Consolas de Última Generación</h2>
+          <p class="section-subtitle">
+            Las mejores consolas para gaming con garantía oficial y soporte
+            técnico especializado
+          </p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-badge">Más Vendido</div>
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=300&h=200&fit=crop"
+                alt="PlayStation 5"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-gamepad fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>PlayStation 5</h3>
+              <p class="product-desc">
+                Consola de siguiente generación con SSD ultra-rápido y gráficos
+                4K
+              </p>
+              <div class="product-price">
+                <span class="price">$499.99</span>
+                <span class="original-price">$549.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('PlayStation 5', 499.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=300&h=200&fit=crop"
+                alt="Xbox Series X"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-gamepad fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Xbox Series X</h3>
+              <p class="product-desc">
+                Potencia máxima con 12 TFLOPS y compatibilidad hacia atrás
+              </p>
+              <div class="product-price">
+                <span class="price">$499.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Xbox Series X', 499.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge">Nuevo</div>
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=300&h=200&fit=crop"
+                alt="Nintendo Switch"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-gamepad fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Nintendo Switch OLED</h3>
+              <p class="product-desc">
+                Pantalla OLED de 7" con colores vibrantes y audio mejorado
+              </p>
+              <div class="product-price">
+                <span class="price">$349.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Nintendo Switch OLED', 349.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1640955014216-75201056c829?w=300&h=200&fit=crop"
+                alt="Steam Deck"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-gamepad fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Steam Deck</h3>
+              <p class="product-desc">
+                Gaming PC portátil con pantalla de 7" y controles integrados
+              </p>
+              <div class="product-price">
+                <span class="price">$399.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Steam Deck', 399.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dispositivos Electrónicos Section -->
+    <section class="products-section alt-bg" id="dispositivos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Electrónica</span>
+          <h2 class="section-title">Dispositivos Electrónicos Premium</h2>
+          <p class="section-subtitle">
+            Smartphones, tablets, wearables y más tecnología de punta
+          </p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-badge">Top</div>
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=300&h=200&fit=crop"
+                alt="iPhone 15 Pro Max"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-mobile-alt fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>iPhone 15 Pro Max</h3>
+              <p class="product-desc">
+                Chip A17 Pro, cámara de 48MP y titanio aeroespacial
+              </p>
+              <div class="product-price">
+                <span class="price">$1,199.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('iPhone 15 Pro Max', 1199.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1561154464-82e9adf32764?w=300&h=200&fit=crop"
+                alt="Samsung Galaxy Tab"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-tablet-alt fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Samsung Galaxy Tab S9</h3>
+              <p class="product-desc">
+                Pantalla Dynamic AMOLED 2X de 11" con S Pen incluido
+              </p>
+              <div class="product-price">
+                <span class="price">$849.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Samsung Galaxy Tab S9', 849.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge">Nuevo</div>
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=300&h=200&fit=crop"
+                alt="Apple Watch"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-watch fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Apple Watch Ultra 2</h3>
+              <p class="product-desc">
+                Pantalla Retina, GPS dual, hasta 36 horas de batería
+              </p>
+              <div class="product-price">
+                <span class="price">$799.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Apple Watch Ultra 2', 799.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=200&fit=crop"
+                alt="Sony Headphones"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-headphones fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Sony WH-1000XM5</h3>
+              <p class="product-desc">
+                Cancelación de ruido líder con 30h de batería
+              </p>
+              <div class="product-price">
+                <span class="price">$349.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Sony WH-1000XM5', 349.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Herramientas Digitales Section -->
+    <section class="products-section" id="herramientas">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Software & Hardware</span>
+          <h2 class="section-title">Herramientas Digitales Profesionales</h2>
+          <p class="section-subtitle">
+            Software, hardware y accesorios para potenciar tu productividad
+          </p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-badge">Pro</div>
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=200&fit=crop"
+                alt="MacBook Pro"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-laptop fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>MacBook Pro M3</h3>
+              <p class="product-desc">
+                Chip M3 Pro, 18GB RAM, SSD 512GB, pantalla Liquid Retina XDR
+              </p>
+              <div class="product-price">
+                <span class="price">$1,999.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('MacBook Pro M3', 1999.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&h=200&fit=crop"
+                alt="Dell XPS"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-desktop fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Dell XPS 15</h3>
+              <p class="product-desc">
+                Intel Core i7, 32GB RAM, RTX 4050, pantalla 3.5K OLED
+              </p>
+              <div class="product-price">
+                <span class="price">$1,799.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Dell XPS 15', 1799.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-badge">Nuevo</div>
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1631549916768-4119b2e31be0?w=300&h=200&fit=crop"
+                alt="Impresora 3D"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-print fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Impresora 3D Creality K1</h3>
+              <p class="product-desc">
+                Velocidad 600mm/s, auto-nivelación, doble extrusor
+              </p>
+              <div class="product-price">
+                <span class="price">$599.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Impresora 3D Creality K1', 599.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=300&h=200&fit=crop"
+                alt="VR Headset"
+                onerror="
+                  this.style.display = 'none';
+                  this.nextElementSibling.style.display = 'flex';
+                "
+              />
+              <i class="fas fa-vr-cardboard fallback-icon"></i>
+            </div>
+            <div class="product-info">
+              <h3>Meta Quest 3</h3>
+              <p class="product-desc">
+                Realidad mixta, resolución 2064x2208 por ojo, 128GB
+              </p>
+              <div class="product-price">
+                <span class="price">$549.99</span>
+              </div>
+              <button
+                class="btn btn-sm btn-primary"
+                onclick="addToCart('Meta Quest 3', 549.99)"
+              >
+                <i class="fas fa-cart-plus"></i> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <h3>Envío Gratis</h3>
+            <p>Envío gratuito en pedidos superiores a $500</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Garantía Oficial</h3>
+            <p>Todos los productos con garantía del fabricante</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Soporte 24/7</h3>
+            <p>Atención al cliente disponible siempre</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <i class="fas fa-undo"></i>
+            </div>
+            <h3>Devolución 30 días</h3>
+            <p>Política de devolución sin preguntas</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-tag">Contacto</span>
+            <h2 class="section-title">
+              ¿Tienes preguntas? <br />Estamos para ayudarte
+            </h2>
+            <p class="contact-desc">
+              Contáctanos por cualquiera de estos medios y nuestro equipo te
+              responderá en menos de 24 horas.
+            </p>
+            <div class="contact-methods">
+              <div class="contact-method">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Teléfono</strong>
+                  <span>+1 (555) 123-4567</span>
+                </div>
+              </div>
+              <div class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <strong>Email</strong>
+                  <span>info@omnidisttech.com</span>
+                </div>
+              </div>
+              <div class="contact-method">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <strong>Dirección</strong>
+                  <span>123 Tech Avenue, Silicon Valley, CA</span>
+                </div>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+          <div class="contact-form-wrapper">
+            <form class="contact-form" id="contactForm">
+              <h3>Envíanos un mensaje</h3>
+              <div class="form-group">
+                <input type="text" id="name" required placeholder="Tu nombre" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  placeholder="Tu email"
+                />
+              </div>
+              <div class="form-group">
+                <input type="tel" id="phone" placeholder="Tu teléfono" />
+              </div>
+              <div class="form-group">
+                <select id="subject" required>
+                  <option value="">Selecciona un tema</option>
+                  <option value="consulta">Consulta sobre productos</option>
+                  <option value="soporte">Soporte técnico</option>
+                  <option value="pedido">Seguimiento de pedido</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="message"
+                  required
+                  placeholder="Tu mensaje"
+                  rows="5"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                <i class="fas fa-paper-plane"></i> Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Chat -->
+    <div class="chat-widget" id="chatWidget">
+      <button class="chat-launcher" id="chatLauncher">
+        <i class="fas fa-comment-dots"></i>
+        <span>Chat</span>
+      </button>
+      <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+          <div>
+            <h4>Chat de Soporte</h4>
+            <p>¿Necesitas ayuda con pedidos o productos?</p>
+          </div>
+          <button class="chat-new" id="chatNew">Nuevo Chat</button>
+          <button class="chat-close" id="chatClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <form class="chat-form" id="chatForm">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Escribe tu mensaje..."
+            autocomplete="off"
+          />
+          <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3><i class="fas fa-shopping-cart"></i> Carrito</h3>
+        <button class="cart-close" id="cartClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">Tu carrito está vacío</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="checkout()">
+          <i class="fas fa-credit-card"></i> Finalizar Compra
+        </button>
+      </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Button -->
+    <button class="cart-btn" id="cartBtn">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="logo">
+              <span class="logo-icon"><i class="fas fa-microchip"></i></span>
+              <span class="logo-text"
+                >OmniDist<span class="accent">Tech</span></span
+              >
+            </div>
+            <p>
+              Tu destino número uno para tecnología de vanguardia. Consolas,
+              dispositivos electrónicos y herramientas digitales premium.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#consolas">Consolas</a></li>
+              <li><a href="#dispositivos">Dispositivos</a></li>
+              <li><a href="#herramientas">Herramientas</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Términos y Condiciones</a></li>
+              <li><a href="#">Política de Privacidad</a></li>
+              <li><a href="#">Política de Envíos</a></li>
+              <li><a href="#">Política de Devoluciones</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p>Suscríbete para recibir ofertas exclusivas</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+              <input type="email" placeholder="Tu email" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 OmniDist Tech. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

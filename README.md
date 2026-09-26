@@ -1,5 +1,5 @@
 # Proyecto Integrador - CESDE 🚀
-> **Módulo:** [Backend1]  
+> **Módulo:** Backend1
 > **Institución:** CESDE  
 > **Proyecto:** Proyecto_Integrador_omnidist-tech  
 > **Integrantes:** Juan Felipe Serna Villada - Mateo 

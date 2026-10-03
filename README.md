@@ -2,7 +2,7 @@
 > **Módulo:** Backend1
 > **Institución:** CESDE  
 > **Proyecto:** Proyecto_Integrador_omnidist-tech  
-> **Integrantes:** Juan Felipe Serna Villada - Mateo 
+> **Integrantes:** Juan Felipe Serna Villada - Mateo Quiñones Valencia
 
 ## 📝 Descripción
 Este es el proyecto integrador desarrollado para la institución **CESDE**. Consiste en una solución técnica llamada **omnidist-tech**, la cual tiene como objetivo [describe brevemente el propósito de tu proyecto, por ejemplo: gestionar el inventario de una distribuidora, automatizar pedidos, etc.].

@@ -1,0 +1,18 @@
+# Java / Maven: artefactos generados
+**/target/
+**/build/
+*.class
+
+# IDE y configuración local
+**/.idea/
+**/.vscode/
+*.iml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entorno / secretos locales
+.env
+.env.*
+!.env.example

@@ -1,0 +1,52 @@
+digraph OmniDistUML {
+  graph [
+    label="OMNIDIST TECH — DIAGRAMA DE CLASES UML",
+    labelloc=t, fontsize=22, fontname="Arial", rankdir=LR,
+    splines=polyline, nodesep=0.40, ranksep=0.90, pad=0.28,
+    bgcolor="white", compound=true, newrank=true
+  ];
+  node [shape=plain, fontname="Arial", fontsize=9];
+  edge [fontname="Arial", fontsize=8, color="#303030", arrowsize=0.75];
+
+  subgraph cluster_controller {
+    label="controller"; color="#999999"; style="rounded"; fontname="Arial"; fontsize=12;
+    pc [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>ProductController</B></TD></TR><HR/><TR><TD ALIGN="LEFT">- productService: ProductService</TD></TR><HR/><TR><TD ALIGN="LEFT">+ ProductController(ProductService)<BR ALIGN="LEFT"/>+ getProducts(): List&lt;Product&gt;<BR ALIGN="LEFT"/>+ getProduct(id): ResponseEntity&lt;Product&gt;<BR ALIGN="LEFT"/>+ createProduct(Product): ResponseEntity&lt;Product&gt;<BR ALIGN="LEFT"/>+ updateProduct(id, Product): ResponseEntity&lt;Product&gt;<BR ALIGN="LEFT"/>+ deleteProduct(id): ResponseEntity&lt;Void&gt;</TD></TR></TABLE> >];
+    hc [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>HealthController</B></TD></TR><HR/><TR><TD ALIGN="LEFT">+ health(): Map&lt;String, String&gt;</TD></TR></TABLE> >];
+    { rank=same; pc; hc; }
+  }
+
+  subgraph cluster_service {
+    label="service"; color="#999999"; style="rounded"; fontname="Arial"; fontsize=12;
+    ps [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>interface</I><BR/><B>ProductService</B></TD></TR><HR/><TR><TD ALIGN="LEFT">+ getAllProducts(): List&lt;Product&gt;<BR ALIGN="LEFT"/>+ getProductById(id): Optional&lt;Product&gt;<BR ALIGN="LEFT"/>+ createProduct(Product): Product<BR ALIGN="LEFT"/>+ updateProduct(id, Product): Optional&lt;Product&gt;<BR ALIGN="LEFT"/>+ deleteProduct(id): boolean</TD></TR></TABLE> >];
+    psi [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>ProductServiceImpl</B></TD></TR><HR/><TR><TD ALIGN="LEFT">- productRepository: ProductRepository</TD></TR><HR/><TR><TD ALIGN="LEFT">+ ProductServiceImpl(ProductRepository)<BR ALIGN="LEFT"/>+ getAllProducts(): List&lt;Product&gt;<BR ALIGN="LEFT"/>+ getProductById(id): Optional&lt;Product&gt;<BR ALIGN="LEFT"/>+ createProduct(Product): Product<BR ALIGN="LEFT"/>+ updateProduct(id, Product): Optional&lt;Product&gt;<BR ALIGN="LEFT"/>+ deleteProduct(id): boolean</TD></TR></TABLE> >];
+    { rank=same; ps; psi; }
+  }
+
+  subgraph cluster_repository {
+    label="repository"; color="#999999"; style="rounded"; fontname="Arial"; fontsize=12;
+    pr [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>interface</I><BR/><B>ProductRepository</B></TD></TR><HR/><TR><TD ALIGN="LEFT">+ findAll(): List&lt;Product&gt;<BR ALIGN="LEFT"/>+ findById(id): Optional&lt;Product&gt;<BR ALIGN="LEFT"/>+ save(Product): Product<BR ALIGN="LEFT"/>+ deleteById(id): void</TD></TR></TABLE> >];
+    prm [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>ProductRepositoryMemory</B></TD></TR><HR/><TR><TD ALIGN="LEFT">- products: List&lt;Product&gt;<BR ALIGN="LEFT"/>- nextId: long</TD></TR><HR/><TR><TD ALIGN="LEFT">+ ProductRepositoryMemory()<BR ALIGN="LEFT"/>+ findAll(): List&lt;Product&gt;<BR ALIGN="LEFT"/>+ findById(id): Optional&lt;Product&gt;<BR ALIGN="LEFT"/>+ save(Product): Product<BR ALIGN="LEFT"/>+ deleteById(id): void</TD></TR></TABLE> >];
+    { rank=same; pr; prm; }
+  }
+
+  subgraph cluster_model {
+    rankdir=TB;
+    label="model"; color="#999999"; style="rounded"; fontname="Arial"; fontsize=12;
+    product [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>Product</B></TD></TR><HR/><TR><TD ALIGN="LEFT">- id: Long<BR ALIGN="LEFT"/>- name: String<BR ALIGN="LEFT"/>- category: String<BR ALIGN="LEFT"/>- price: double<BR ALIGN="LEFT"/>- stock: int<BR ALIGN="LEFT"/>- description: String</TD></TR><HR/><TR><TD ALIGN="LEFT">+ Product()<BR ALIGN="LEFT"/>+ Product(id, name, category, price, stock, description)<BR ALIGN="LEFT"/>+ getId()/setId()<BR ALIGN="LEFT"/>+ getName()/setName()<BR ALIGN="LEFT"/>+ getCategory()/setCategory()<BR ALIGN="LEFT"/>+ getPrice()/setPrice()<BR ALIGN="LEFT"/>+ getStock()/setStock()<BR ALIGN="LEFT"/>+ getDescription()/setDescription()</TD></TR></TABLE> >];
+    user [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>abstract class</I><BR/><B>User</B></TD></TR><HR/><TR><TD ALIGN="LEFT">- id: Long<BR ALIGN="LEFT"/>- name: String<BR ALIGN="LEFT"/>- email: String<BR ALIGN="LEFT"/>- passwordHash: String<BR ALIGN="LEFT"/>- active: boolean</TD></TR><HR/><TR><TD ALIGN="LEFT"># User()<BR ALIGN="LEFT"/># User(common fields)<BR ALIGN="LEFT"/>+ getId()/setId()<BR ALIGN="LEFT"/>+ getName()/setName()<BR ALIGN="LEFT"/>+ getEmail()/setEmail()<BR ALIGN="LEFT"/>+ getPasswordHash()/setPasswordHash()<BR ALIGN="LEFT"/>+ isActive()/setActive()<BR ALIGN="LEFT"/>+ getRole(): String {abstract}</TD></TR></TABLE> >];
+    employee [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>Employee</B></TD></TR><HR/><TR><TD ALIGN="LEFT">- identification: String<BR ALIGN="LEFT"/>- position: String<BR ALIGN="LEFT"/>- phone: String</TD></TR><HR/><TR><TD ALIGN="LEFT">+ Employee()<BR ALIGN="LEFT"/>+ Employee(common fields, employee fields)<BR ALIGN="LEFT"/>+ getIdentification()/setIdentification()<BR ALIGN="LEFT"/>+ getPosition()/setPosition()<BR ALIGN="LEFT"/>+ getPhone()/setPhone()<BR ALIGN="LEFT"/>+ getRole(): "EMPLOYEE"</TD></TR></TABLE> >];
+    admin [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>Administrator</B></TD></TR><HR/><TR><TD ALIGN="LEFT">(no additional attributes)</TD></TR><HR/><TR><TD ALIGN="LEFT">+ Administrator(...)<BR ALIGN="LEFT"/>+ getRole(): "ADMINISTRATOR"</TD></TR></TABLE> >];
+    { rank=same; product; user; }
+    { rank=same; employee; admin; }
+  }
+
+  app [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD><I>class</I><BR/><B>OmnidistApplication</B></TD></TR><HR/><TR><TD ALIGN="LEFT">+ main(args: String[]): void {static}</TD></TR></TABLE> >];
+
+  pc -> ps [label="depends on", style=dashed, arrowhead=vee, minlen=2];
+  psi -> ps [label="implements", style=dashed, arrowhead=empty, constraint=false];
+  psi -> pr [label="depends on", style=dashed, arrowhead=vee, minlen=2];
+  prm -> pr [label="implements", style=dashed, arrowhead=empty, constraint=false];
+  prm -> product [label="stores Product", dir=both, arrowtail=odiamond, arrowhead=vee, minlen=2];
+  employee -> user [arrowhead=empty, label="inherits", constraint=false];
+  admin -> user [arrowhead=empty, label="inherits", constraint=false];
+}

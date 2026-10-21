@@ -1,0 +1,150 @@
+@startuml
+' OmniDist Tech - class diagram for current backend + explicit domain model
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor White
+  BorderColor #303030
+  ArrowColor #303030
+}
+top to bottom direction
+
+package "com.omnidist.tech" {
+  class OmnidistApplication {
+    {static} + main(args: String[]): void
+  }
+
+  package "controller" {
+    class ProductController {
+      - productService: ProductService
+      + ProductController(productService: ProductService)
+      + getProducts(): List<Product>
+      + getProduct(id: Long): ResponseEntity<Product>
+      + createProduct(product: Product): ResponseEntity<Product>
+      + updateProduct(id: Long, product: Product): ResponseEntity<Product>
+      + deleteProduct(id: Long): ResponseEntity<Void>
+    }
+
+    class HealthController {
+      + health(): Map<String, String>
+    }
+  }
+
+  package "service" {
+    interface ProductService {
+      + getAllProducts(): List<Product>
+      + getProductById(id: Long): Optional<Product>
+      + createProduct(product: Product): Product
+      + updateProduct(id: Long, product: Product): Optional<Product>
+      + deleteProduct(id: Long): boolean
+    }
+
+    class ProductServiceImpl {
+      - productRepository: ProductRepository
+      + ProductServiceImpl(productRepository: ProductRepository)
+      + getAllProducts(): List<Product>
+      + getProductById(id: Long): Optional<Product>
+      + createProduct(product: Product): Product
+      + updateProduct(id: Long, product: Product): Optional<Product>
+      + deleteProduct(id: Long): boolean
+    }
+  }
+
+  package "repository" {
+    interface ProductRepository {
+      + findAll(): List<Product>
+      + findById(id: Long): Optional<Product>
+      + save(product: Product): Product
+      + deleteById(id: Long): void
+    }
+
+    class ProductRepositoryMemory {
+      - products: List<Product>
+      - nextId: long
+      + ProductRepositoryMemory()
+      + findAll(): List<Product>
+      + findById(id: Long): Optional<Product>
+      + save(product: Product): Product
+      + deleteById(id: Long): void
+    }
+  }
+
+  package "model" {
+    class Product {
+      - id: Long
+      - name: String
+      - category: String
+      - price: double
+      - stock: int
+      - description: String
+      + Product()
+      + Product(id: Long, name: String, category: String, price: double, stock: int, description: String)
+      + getId(): Long
+      + setId(id: Long): void
+      + getName(): String
+      + setName(name: String): void
+      + getCategory(): String
+      + setCategory(category: String): void
+      + getPrice(): double
+      + setPrice(price: double): void
+      + getStock(): int
+      + setStock(stock: int): void
+      + getDescription(): String
+      + setDescription(description: String): void
+    }
+
+    abstract class User {
+      - id: Long
+      - name: String
+      - email: String
+      - passwordHash: String
+      - active: boolean
+      # User()
+      # User(id: Long, name: String, email: String, passwordHash: String, active: boolean)
+      + getId(): Long
+      + setId(id: Long): void
+      + getName(): String
+      + setName(name: String): void
+      + getEmail(): String
+      + setEmail(email: String): void
+      + getPasswordHash(): String
+      + setPasswordHash(passwordHash: String): void
+      + isActive(): boolean
+      + setActive(active: boolean): void
+      {abstract} + getRole(): String
+    }
+
+    class Employee {
+      - identification: String
+      - position: String
+      - phone: String
+      + Employee()
+      + Employee(id: Long, name: String, email: String, passwordHash: String, identification: String, position: String, phone: String, active: boolean)
+      + getIdentification(): String
+      + setIdentification(identification: String): void
+      + getPosition(): String
+      + setPosition(position: String): void
+      + getPhone(): String
+      + setPhone(phone: String): void
+      + getRole(): String
+    }
+
+    class Administrator {
+      + Administrator()
+      + Administrator(id: Long, name: String, email: String, passwordHash: String, active: boolean)
+      + getRole(): String
+    }
+  }
+}
+
+ProductController --> ProductService : uses
+ProductServiceImpl ..|> ProductService
+ProductServiceImpl --> ProductRepository : uses
+ProductRepositoryMemory ..|> ProductRepository
+ProductRepositoryMemory "1" o--> "0..*" Product : stores
+Employee --|> User
+Administrator --|> User
+@enduml

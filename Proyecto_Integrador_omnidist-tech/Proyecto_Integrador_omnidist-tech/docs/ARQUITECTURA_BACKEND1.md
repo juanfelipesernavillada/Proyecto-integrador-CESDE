@@ -44,3 +44,24 @@ public ProductServiceImpl(ProductRepository productRepository) {
 ## 5. Persistencia
 
 En esta primera versión se usa una lista en memoria. No es una base de datos y se reinicia al apagar el servidor. Esto mantiene el proyecto dentro del alcance de la clase actual.
+
+## 6. Modelo de usuarios y POO
+
+`User` es una clase abstracta con los datos comunes de una cuenta. `Employee` y `Administrator` extienden `User`, reutilizan sus atributos y sobrescriben `getRole()` para identificar su tipo. Esto aplica herencia, encapsulación y polimorfismo y elimina la duplicación de los campos comunes. `Product` permanece como una entidad de dominio independiente.
+
+> Alcance actual: estas clases representan el modelo de dominio, pero todavía no hay controladores, servicios ni repositorios de usuarios que permitan administrarlas mediante la API. Tampoco constituyen por sí solas un sistema de autenticación o autorización.
+
+## 7. Diagrama de clases UML
+
+El diagrama fuente editable y sus representaciones se encuentran en esta carpeta:
+
+- `DIAGRAMA_CLASES_UML.puml`: fuente PlantUML.
+- `DIAGRAMA_CLASES_UML.png`: imagen para insertar en el informe.
+- `DIAGRAMA_CLASES_UML.svg`: imagen vectorial para ampliar sin perder calidad.
+- `DIAGRAMA_CLASES_UML.dot`: fuente Graphviz de la representación visual.
+
+Vista previa del diagrama:
+
+![Diagrama de clases UML de OmniDist Tech](DIAGRAMA_CLASES_UML.png)
+
+El UML distingue las clases implementadas de las relaciones que sí existen en el código. No dibuja asociaciones artificiales entre `Product` y los usuarios.

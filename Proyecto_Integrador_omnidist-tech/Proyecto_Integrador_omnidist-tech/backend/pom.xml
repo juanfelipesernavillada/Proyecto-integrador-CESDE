@@ -37,6 +37,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- The CLI has its own main method in app.Application. Keep Spring Boot's entry point explicit. -->
+                    <mainClass>com.omnidist.tech.OmnidistApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

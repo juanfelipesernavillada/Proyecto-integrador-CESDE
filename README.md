@@ -28,6 +28,7 @@ OmniDist Tech es una aplicación web académica orientada a la consulta de produ
 Proyecto-integrador-CESDE/
 ├── README.md
 ├── .gitignore
+├── linkGithub.txt
 ├── docs/
 │   └── scrum/
 │       ├── README.md
@@ -36,7 +37,6 @@ Proyecto-integrador-CESDE/
 │       └── estimation-and-sprints.md
 └── Proyecto_Integrador_omnidist-tech/
     ├── .vscode/                         # configuración de desarrollo existente
-    ├── linkGithub.txt
     └── Proyecto_Integrador_omnidist-tech/
         ├── README.md                    # notas de Backend 1
         ├── backend/                     # aplicación Spring Boot y frontend servido por ella
@@ -77,3 +77,9 @@ Esta actualización incorpora documentación inicial para la actividad de Metodo
 ## Licencia
 
 Proyecto de uso académico para CESDE.
+
+## Entrega de Backend 1 - Semana 12
+
+El backend incorpora una aplicación CLI académica en el paquete `app`, además de la aplicación web Spring Boot de Semana 6. Son dos modos de ejecución distintos dentro del mismo módulo. La documentación de la CLI se encuentra en `Proyecto_Integrador_omnidist-tech/Proyecto_Integrador_omnidist-tech/docs/ARQUITECTURA_CLI_SEMANA12.md`, junto con sus diagramas. El CLI incluye lectura centralizada, validación de entradas, puertos de servicio/repositorio e inventario CRUD en memoria.
+
+Para ejecutar la CLI, entra en `Proyecto_Integrador_omnidist-tech/Proyecto_Integrador_omnidist-tech/backend` y ejecuta `mvn -DskipTests compile` seguido de `java -cp target/classes app.Application`. Para iniciar la aplicación web, utiliza `mvn spring-boot:run` en el mismo directorio.

@@ -1,0 +1,26 @@
+digraph CLI_UML {
+  graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.35", ranksep="0.55", splines=ortho, fontname="Arial", labelloc="t", label="OMNIDIST TECH - DIAGRAMA DE CLASES CLI (SEMANA 12)", fontsize=20];
+  node [shape=plain, fontname="Arial"];
+  edge [fontname="Arial", fontsize=9, color="#303030", arrowsize=0.75];
+  Application [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>Application</B></TD></TR><TR><TD ALIGN="LEFT">+ main(args): void</TD></TR></TABLE> >];
+  UI [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>UserInterface</B></TD></TR><TR><TD ALIGN="LEFT">- productView: ProductView</TD></TR><TR><TD ALIGN="LEFT">- input: FormTypeValidator</TD></TR><TR><TD ALIGN="LEFT">+ menuApp(): void</TD></TR><TR><TD ALIGN="LEFT">+ menuInicio(): void</TD></TR><TR><TD ALIGN="LEFT">+ menuPorFuncionalidad(): void</TD></TR></TABLE> >];
+  View [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>ProductView</B></TD></TR><TR><TD ALIGN="LEFT">- productService: ProductServiceInterface</TD></TR><TR><TD ALIGN="LEFT">- input: FormTypeValidator</TD></TR><TR><TD ALIGN="LEFT">+ createProduct(): void</TD></TR><TR><TD ALIGN="LEFT">+ selectAllProducts(): void</TD></TR><TR><TD ALIGN="LEFT">+ findProductById(): void</TD></TR><TR><TD ALIGN="LEFT">+ updateProduct(): void</TD></TR><TR><TD ALIGN="LEFT">+ deleteProduct(): void</TD></TR></TABLE> >];
+  Validator [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>FormTypeValidator</B></TD></TR><TR><TD ALIGN="LEFT">- scanner: Scanner</TD></TR><TR><TD ALIGN="LEFT">+ readRequiredText(...): String</TD></TR><TR><TD ALIGN="LEFT">+ readInt(...): int</TD></TR><TR><TD ALIGN="LEFT">+ readPositiveDouble(...): double</TD></TR><TR><TD ALIGN="LEFT">+ readYesNo(...): boolean</TD></TR></TABLE> >];
+  ServiceI [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>&lt;&lt;interface&gt;&gt;<BR/>ProductServiceInterface</B></TD></TR><TR><TD ALIGN="LEFT">+ createProduct(...): Product</TD></TR><TR><TD ALIGN="LEFT">+ selectAllProducts(): List&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">+ findProductById(id): Optional&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">+ updateProduct(...): Optional&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">+ deleteProduct(id): boolean</TD></TR></TABLE> >];
+  Service [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>ProductServiceImp</B></TD></TR><TR><TD ALIGN="LEFT">- productRepositoryPort: ProductRepositoryPort</TD></TR><TR><TD ALIGN="LEFT">+ ProductServiceImp(repositoryPort)</TD></TR><TR><TD ALIGN="LEFT">+ CRUD product use cases</TD></TR></TABLE> >];
+  RepoI [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>&lt;&lt;interface&gt;&gt;<BR/>ProductRepositoryPort</B></TD></TR><TR><TD ALIGN="LEFT">+ saveProduct(product): Product</TD></TR><TR><TD ALIGN="LEFT">+ selectAllProducts(): List&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">+ selectProductById(id): Optional&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">+ updateProduct(...): Optional&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">+ deleteProduct(id): boolean</TD></TR></TABLE> >];
+  Repo [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>ProductRepositoryImp</B></TD></TR><TR><TD ALIGN="LEFT">- products: List&lt;Product&gt;</TD></TR><TR><TD ALIGN="LEFT">- nextId: int</TD></TR><TR><TD ALIGN="LEFT">+ CRUD using ArrayList</TD></TR></TABLE> >];
+  Product [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#EAF2F8"><B>Product</B></TD></TR><TR><TD ALIGN="LEFT">- id: int</TD></TR><TR><TD ALIGN="LEFT">- name: String</TD></TR><TR><TD ALIGN="LEFT">- description: String</TD></TR><TR><TD ALIGN="LEFT">- price: double</TD></TR><TR><TD ALIGN="LEFT">- stock: int</TD></TR><TR><TD ALIGN="LEFT">- category: String</TD></TR></TABLE> >];
+  Application -> UI [label="creates"];
+  UI -> View [label="delegates"];
+  UI -> Validator [label="uses shared input"];
+  View -> ServiceI [label="uses abstraction"];
+  View -> Validator [label="uses"];
+  Service -> ServiceI [style=dashed, arrowhead=empty, label="implements"];
+  Service -> RepoI [label="depends on abstraction"];
+  Repo -> RepoI [style=dashed, arrowhead=empty, label="implements"];
+  Repo -> Product [label="stores 0..*"];
+  {rank=same; UI; Validator}
+  {rank=same; Service; ServiceI}
+  {rank=same; Repo; RepoI}
+}

@@ -1,0 +1,129 @@
+@startuml
+ title OmniDist Tech - Arquitectura CLI (Semana 12)
+ skinparam classAttributeIconSize 0
+ skinparam shadowing false
+ skinparam packageStyle rectangle
+ skinparam linetype ortho
+ skinparam defaultFontName Arial
+ skinparam class { BackgroundColor White; BorderColor #303030; ArrowColor #303030 }
+ top to bottom direction
+
+ package "app" {
+   class Application {
+     {static} + main(args: String[]): void
+   }
+   package "ui" {
+     class UserInterface {
+       - productView: ProductView
+       - input: FormTypeValidator
+       + UserInterface(productView: ProductView, input: FormTypeValidator)
+       + menuApp(): void
+       + menuInicio(): void
+       + menuPorFuncionalidad(): void
+     }
+   }
+   package "view" {
+     class ProductView {
+       - productService: ProductServiceInterface
+       - input: FormTypeValidator
+       + createProduct(): void
+       + selectAllProducts(): void
+       + findProductById(): void
+       + updateProduct(): void
+       + deleteProduct(): void
+     }
+   }
+   package "domain" {
+     class Product {
+       - id: int
+       - name: String
+       - description: String
+       - price: double
+       - stock: int
+       - category: String
+       + Product()
+       + Product(id, name, description, price, stock, category)
+       + getId(): int
+       + setId(id: int): void
+       + getName(): String
+       + setName(name: String): void
+       + getPrice(): double
+       + setPrice(price: double): void
+       + getStock(): int
+       + setStock(stock: int): void
+     }
+     enum CategoryEnum {
+       GAMING
+       ELECTRONICS
+       SOFTWARE_HARDWARE
+     }
+   }
+   package "service" {
+     package "inputports" {
+       interface ProductServiceInterface {
+         + createProduct(name, description, price, stock, category): Product
+         + selectAllProducts(): List<Product>
+         + findProductById(id: int): Optional<Product>
+         + updateProduct(id, name, description, price, stock, category): Optional<Product>
+         + deleteProduct(id: int): boolean
+       }
+     }
+     package "outputports" {
+       interface ProductRepositoryPort {
+         + saveProduct(product: Product): Product
+         + selectAllProducts(): List<Product>
+         + selectProductById(id: int): Optional<Product>
+         + updateProduct(id, product): Optional<Product>
+         + deleteProduct(id: int): boolean
+       }
+     }
+     package "validations" {
+       class FormTypeValidator {
+         - scanner: Scanner
+         + readRequiredText(prompt: String): String
+         + readInt(prompt, min, max): int
+         + readPositiveDouble(prompt): double
+         + readYesNo(prompt): boolean
+       }
+     }
+     package "helpers" {
+       class SetCategory {
+         {static} + getCategory(input: FormTypeValidator): String
+       }
+     }
+     class ProductServiceImp {
+       - productRepositoryPort: ProductRepositoryPort
+       + ProductServiceImp(productRepositoryPort: ProductRepositoryPort)
+       + createProduct(...): Product
+       + selectAllProducts(): List<Product>
+       + findProductById(id: int): Optional<Product>
+       + updateProduct(...): Optional<Product>
+       + deleteProduct(id: int): boolean
+     }
+   }
+   package "repository" {
+     class ProductRepositoryImp {
+       - products: List<Product>
+       - nextId: int
+       + saveProduct(product: Product): Product
+       + selectAllProducts(): List<Product>
+       + selectProductById(id: int): Optional<Product>
+       + updateProduct(id, product): Optional<Product>
+       + deleteProduct(id: int): boolean
+     }
+   }
+ }
+
+ Application ..> UserInterface : creates
+ Application ..> FormTypeValidator : creates one shared input reader
+ UserInterface --> ProductView : delegates to
+ UserInterface --> FormTypeValidator : uses
+ ProductView --> ProductServiceInterface : depends on
+ ProductView --> FormTypeValidator : uses
+ ProductView ..> SetCategory : uses
+ ProductServiceImp ..|> ProductServiceInterface
+ ProductServiceImp --> ProductRepositoryPort : depends on abstraction
+ ProductRepositoryImp ..|> ProductRepositoryPort
+ ProductRepositoryImp "1" o--> "0..*" Product : stores in memory
+ SetCategory ..> CategoryEnum : maps selection
+ @enduml
